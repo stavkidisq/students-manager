@@ -2,7 +2,7 @@
 
 void readfile(const char* filename, struct student* buff, int index)
 {
-    FILE* fstream = open_file(filename, "r");
+    FILE* fstream = open_file(filename, "rb");
     fread(buff, sizeof(struct student), index, fstream);
 
     fclose(fstream);
@@ -10,7 +10,7 @@ void readfile(const char* filename, struct student* buff, int index)
 
 void write2file(const char* filename, struct student* buff, int index)
 {
-    FILE* fstream = open_file(filename, "w");
+    FILE* fstream = open_file(filename, "wb");
     fwrite(buff, sizeof(struct student), index, fstream);
 
     fclose(fstream);

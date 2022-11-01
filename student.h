@@ -8,7 +8,7 @@
 
 #define FIO_COUNT 16
 
-static const int N = 2;
+static const int N = 64;
 
 struct student
 {
