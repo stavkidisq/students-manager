@@ -39,7 +39,7 @@ int main()
         write2file("students.bin", students, index);
         readfile("students.bin", out_students, index);
 
-        printf("Students list after reading.\n");
+        printf("Output students list.\n");
         display_students(out_students, index);
     }
     else
@@ -56,7 +56,7 @@ int main()
         {
             bubble_sort(out_students, index);
 
-            printf("Students list after reading.\n");
+            printf("Output students list after sorting.\n");
             display_students(out_students, index);
         }
         else
