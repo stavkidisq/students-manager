@@ -8,6 +8,7 @@
 
 int cmp_by_second_name(struct student, struct student);
 void bubble_sort(struct student*, int);
+int get_start_index(struct student*);
 
 /*
     Имя программы: students-manager.
@@ -20,32 +21,70 @@ int main()
 {
     struct student students[N];
     struct student out_students[N];
-    int index = 0;
+    int index;
 
-    index = input_students_info(students, 0);
-    display_students(students, index);
+    input_students_info(students, 0);
+    index = get_start_index(students);
 
-    bubble_sort(students, index);
-    display_students(students, index);
+    if(index > 0)
+    {
+        printf("Students list before sorting.\n");
+        display_students(students, index);
 
-    write2file("students.bin", students, index);
-    readfile("students.bin", out_students, index);
+        bubble_sort(students, index);
 
-    display_students(out_students, index);
+        printf("Students list after sorting.\n");
+        display_students(students, index);
+
+        write2file("students.bin", students, index);
+        readfile("students.bin", out_students, index);
+
+        printf("Students list after reading.\n");
+        display_students(out_students, index);
+    }
+    else
+    {
+        printf("Students list is empty!\n");
+    }
 
     if(index < N)
     {
-        index = input_students_info(out_students, index);
+        input_students_info(out_students, index);
+        index = get_start_index(out_students);
 
-        bubble_sort(out_students, index);
-        display_students(out_students, index);
+        if(index > 0)
+        {
+            bubble_sort(out_students, index);
+
+            printf("Students list after reading.\n");
+            display_students(out_students, index);
+        }
+        else
+        {
+            printf("Students list is empty!\n");
+        }
 
         write2file("out-students.bin", out_students, index);
+    }
+    else
+    {
+        printf("Students list is full!");
     }
 
     printf("The program has been successfully completed!");
 
     return 0;
+}
+
+int get_start_index(struct student* students)
+{
+    for(int i = 0; i < N; i++)
+    {
+        if(strcmp(students[i].fio, "") == 0)
+            return i;
+    }
+
+    return N;
 }
 
 int cmp_by_second_name(struct student first_student, struct student second_student)
