@@ -8,16 +8,15 @@ void display_students(struct student* students, int index)
         printf("Student %d: %s, %d\n", i, students[i].fio, students[i].stipa);
 }
 
-int input_students_info(struct student* students, int start)
+int input_students_info(struct student* students, int start_index)
 {
     char stipa[10];
-    int index = start;
 
-    while(index < N)
+    while(start_index < N)
     {
-        input_fio(students[index].fio);
+        input_fio(students[start_index].fio);
 
-        if(strcmp(students[index].fio, "") == 0)
+        if(strcmp(students[start_index].fio, "") == 0)
             break;
 
         do
@@ -26,11 +25,11 @@ int input_students_info(struct student* students, int start)
         }
         while(check_str(stipa) == 0); // Стипендия должна состоять только из цифр.
 
-        students[index].stipa = atoi(stipa);
-        index++;
+        students[start_index].stipa = atoi(stipa);
+        start_index++;
     }
 
-    return index;
+    return start_index;
 }
 
 void input_fio(char* fio)

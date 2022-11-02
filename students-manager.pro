@@ -4,8 +4,8 @@ CONFIG -= app_bundle
 CONFIG -= qt
 
 SOURCES += main.c \
-    file.cpp \
-    student.cpp
+    file.c \
+    student.c
 
 HEADERS += \
     file.h \

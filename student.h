@@ -16,7 +16,7 @@ struct student
     int stipa;
 };
 
-void display_students(struct student*, int index);
+void display_students(struct student*, int);
 int input_students_info(struct student*, int);
 
 void input_fio(char*);
